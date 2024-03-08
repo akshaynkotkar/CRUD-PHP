@@ -1,31 +1,31 @@
+
 <?php
-include('functions.php'); // Adjust the path based on your directory structure
-
-// Assuming $con is your database connection
-
-// Check if an edit request is submitted
-if (isset($_POST['edit_btn'])) {
-    // Get the ID to be edited
-    $id_to_edit = $_POST['edit_id'];
-
-    // Fetch the existing data from the database
-    $query = "SELECT * FROM student WHERE id = $id_to_edit";
+include('functions.php');
+$id = $_GET['updateid']; 
+$sql="select * from`student` where id=$id";
+$result=mysqli_query($con,$sql);
+$row=mysqli_fetch_assoc($result);
+$rno=$row['rno'];
+$prn=$row['prn'];
+$name=$row['name'];
+$email=$row['email'];
+$mobile=$row['mobile'];
+if (isset($_POST['submit'])) {
+ 
+    $rno=$_POST['rno'];
+    $prn=$_POST['prn'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $mobile = $_POST['mobile'];
+    $query = "UPDATE `student` SET id=$id,rno='$rno',prn='$prn',name = '$name', email = '$email' ,mobile='$mobile' where id=$id";
+    
     $result = mysqli_query($con, $query);
 
     if ($result) {
-        // Fetch the data as an associative array
-        $row = mysqli_fetch_assoc($result);
-
-        // Assign the values to variables for each field
-        $existing_roll = $row['rno'];
-        $existing_prn = $row['prn'];
-        $existing_name = $row['name'];
-        $existing_email = $row['email'];
-        $existing_mobile = $row['mobile'];
-        // Add more fields as needed
+       
+       echo "<script>if(confirm('Your Record Updated Successfully. ')){document.location.href='index.php'}else{document.location.href='index.php'};</script>";
     } else {
-        echo "Error fetching record: " . mysqli_error($con);
-        // Handle the error accordingly
+        echo "Error updating record: " . mysqli_error($con);
     }
 }
 ?>
@@ -89,24 +89,26 @@ if (isset($_POST['edit_btn'])) {
         button:hover {
             background-color: #45a049;
         }
+        
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Edit Student</h2>
-        <form action="code.php" method="post">
-            <input type="hidden" name="edit_id" value="<?php echo $id_to_edit; ?>">
-            <label for="new_roll">Roll.No:</label>
-            <input type="number" name="new_roll" value="<?php echo isset($existing_roll) ? $existing_roll : ''; ?>">
-            <label for="new_prn">PRN No:</label>
-            <input type="text" name="new_prn" value="<?php echo isset($existing_prn) ? $existing_prn : ''; ?>">
-            <label for="new_name">Name:</label>
-            <input type="text" name="new_name" value="<?php echo isset($existing_name) ? $existing_name : ''; ?>">
-            <label for="new_email">Email:</label>
-            <input type="email" name="new_email" value="<?php echo isset($existing_email) ? $existing_email : ''; ?>">
-            <label for="new_mobile">Mobile Number:</label>
-            <input type="number" name="new_mobile" value="<?php echo isset($existing_mobile) ? $existing_mobile : ''; ?>">
-            <button name="edit-student" type="submit">Edit</button>
+        <h2>Edit</h2>
+        <form  method="post">
+            <label for="prn">Roll.No:</label>
+            <input type="number" id="rno" name="rno" value="<?php echo $rno?>">
+            <label for="prn">PRN No:</label>
+            <input type="text" id="prn" name="prn" value="<?php echo $prn?>">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="<?php echo $name?>">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="<?php echo $email?>">
+
+            <label for="mobile">Mobile Number:</label>
+            <input type="number" id="mobile" name="mobile" value="<?php echo $mobile?>">
+
+            <button name="submit"type="submit">Update</button>
         </form>
     </div>
 </body>

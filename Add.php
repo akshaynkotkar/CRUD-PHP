@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+        function validateMobile() {
+            var mobileInput = document.getElementById('mobile');
+            var mobileValue = mobileInput.value.trim();
+
+            // Check if the mobile number contains exactly 10 digits
+            if (/^\d{10}$/.test(mobileValue)) {
+                return true; // Mobile number is valid
+            } else {
+                alert('Please enter a valid 10-digit mobile number.');
+                return false; // Mobile number is not valid
+            }
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Student</title>
@@ -74,9 +88,9 @@
             <input type="email" id="email" name="email" required>
 
             <label for="mobile">Mobile Number:</label>
-            <input type="number" id="mobile" name="mobile" required>
+            <input type="number" id="mobile"pattern="[0-9]{10}"  name="mobile" required>
 
-            <button name="add-student"type="submit">Register</button>
+            <button name="add-student"type="submit" onclick="return validateMobile()">Add Student</button>
         </form>
     </div>
 </body>

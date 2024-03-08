@@ -19,6 +19,4 @@ function getAll($table)
     $query_view="select * from $table";
     return $query_view_run=mysqli_query($con,$query_view);
 }
-
-
 ?>

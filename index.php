@@ -67,37 +67,36 @@
         }
        
 .delete-btn {
-    background-color: #FF0000; /* Set your desired color code for the background */
-    color: white; /* Set text color */
-    border: none; /* Remove border if needed */
-    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: #FF0000; 
+    color: white;
+    border: none; 
+    padding: 10px 20px; 
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 4px; /* Optional: Add border radius for rounded corners */
+    border-radius: 4px; 
 
-    /* Hover styles */
-    transition: background-color 0.3s ease; /* Add smooth transition */
+    transition: background-color 0.3s ease; 
 }
 
 .delete-btn:hover {
-    background-color: #FF0000; /* Set the same color code as normal state */
+    background-color: #FF0000;
 }
 .edit-btn {
-    background-color: #4CAF50; /* Set your desired color code */
-    color: white; /* Set text color */
-    border: none; /* Remove border if needed */
-    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: #4CAF50; 
+    color: white; 
+    border: none;
+    padding: 10px 20px; 
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 4px; /* Optional: Add border radius for rounded corners */
+    border-radius: 4px; 
 }
     </style>
 </head>
@@ -134,17 +133,11 @@
                             <td scope="col-md-5"><?= $item['email']; ?></td>
                             <td scope="col-md-5"><?= $item['mobile']; ?></td>
                             <td scope="col-md-5">
-                            <form action="edit.php" method="post" >
-                                            <input type="hidden" name="edit_id" value="<?= $item['id']; ?>">
-                                            <button type="submit" class="edit-btn">Edit</button>
-                                        </form>
-                                        </td>
+                                <button class="edit-btn" ><a  style="color: white;"href="edit.php?updateid=<?= $item['id']; ?>" onclick="return confirm('Are you sure you want to Edit this record?');" >Edit</a></button>
+                            </td>
                             <td scope="col-md-5">
-                            <form action="delete.php" method="post" onsubmit="return confirm('Are you sure you want to delete this record?');">
-                                            <input type="hidden" name="delete_id" value="<?= $item['id']; ?>">
-                                            <button type="submit" class="delete-btn">Delete</button>
-                                        </form>
-                                        </td>
+                                <button class="delete-btn" ><a style="color: white;"href="delete.php?deleteid=<?= $item['id']; ?>" onclick="return confirm('Are you sure you want to delete this record?');" >Delete</a></button>
+                            </td>
 
                         </tr>
 
@@ -163,9 +156,8 @@
     </div>
 
     <script>
-        // You can add JavaScript functionality for the "Add" button here
+        
         document.getElementById('addButton').addEventListener('click', function() {
-            // Implement your logic for adding a new user
             window.location.href = 'Add.php';
         });
     </script>
