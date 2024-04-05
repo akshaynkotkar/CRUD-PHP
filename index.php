@@ -108,7 +108,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Sr No.</th>
                     <th>Roll. No.</th>
                     <th>PRN No.</th>
                     <th>Name</th>
@@ -123,20 +123,21 @@
                 include('functions.php');
                 $students = getAll("student");
                 if (mysqli_num_rows($students) > 0) {
+                    $start=1;
                     foreach ($students as $item) {
                 ?>
                         <tr>
-                            <td scope="col-md-5"><?= $item['id']; ?></td>
+                            <td scope="col-md-5"><?= $start++ ?></td>
                             <td scope="col-md-5"><?= $item['rno']; ?></td>
                             <td scope="col-md-5"><?= $item['prn']; ?></td>
                             <td scope="col-md-5"><?= $item['name']; ?></td>
                             <td scope="col-md-5"><?= $item['email']; ?></td>
                             <td scope="col-md-5"><?= $item['mobile']; ?></td>
                             <td scope="col-md-5">
-                                <button class="edit-btn" ><a  style="color: white;"href="edit.php?updateid=<?= $item['id']; ?>" onclick="return confirm('Are you sure you want to Edit this record?');" >Edit</a></button>
+                            <a  style="color: white;"href="edit?updateid=<?= $item['id']; ?>" onclick="return confirm('Are you sure you want to Edit this record?');" >     <button class="edit-btn" >Edit</button></a>
                             </td>
                             <td scope="col-md-5">
-                                <button class="delete-btn" ><a style="color: white;"href="delete.php?deleteid=<?= $item['id']; ?>" onclick="return confirm('Are you sure you want to delete this record?');" >Delete</a></button>
+                            <a style="color: white;"href="delete?deleteid=<?= $item['id']; ?>" onclick="return confirm('Are you sure you want to delete this record?');" > <button class="delete-btn" >Delete</button></a>
                             </td>
 
                         </tr>
@@ -158,7 +159,7 @@
     <script>
         
         document.getElementById('addButton').addEventListener('click', function() {
-            window.location.href = 'Add.php';
+            window.location.href = 'Add';
         });
     </script>
 </body>

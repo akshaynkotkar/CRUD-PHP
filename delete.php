@@ -7,7 +7,7 @@ if (isset($_GET['deleteid'])) {
     $result = mysqli_query($con,$query);
     if ($result) {
        
-        echo "<script>if(confirm('Your Record Deleted Successfully. ')){document.location.href='index.php'}else{document.location.href='index.php'};</script>";
+        echo "<script>if(confirm('Your Record Deleted Successfully. ')){document.location.href='index'}else{document.location.href='index'};</script>";
     } else {
         echo "Error deleting record: " . mysqli_error($con);
     }

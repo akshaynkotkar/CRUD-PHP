@@ -14,7 +14,7 @@ if (isset($_POST['add-student'])) {
 
  if (mysqli_num_rows($checkResult) > 0) {
      echo "<script>alert('Roll No or PRN or Emailalready exists. Please choose a different Roll No or PRN. or Email');</script>";
-     echo "<script>document.location.href='Add.php';</script>";
+     echo "<script>document.location.href='Add';</script>";
  } else{
     $sql = "INSERT INTO student (rno,prn,name,email,mobile)
     values ('$rno','$prn','$name','$email','$mobile')";
@@ -23,7 +23,7 @@ if (isset($_POST['add-student'])) {
     $query_run = mysqli_query($con, $sql);
     if ($query_run) {
        
-        echo "<script>if(confirm('Your Record Sucessfully Inserted. ')){document.location.href='index.php'}else{document.location.href='Add.php'};</script>";
+        echo "<script>if(confirm('Your Record Sucessfully Inserted. ')){document.location.href='index'}else{document.location.href='Add'};</script>";
 
     } else {
         echo "Student Not added ";

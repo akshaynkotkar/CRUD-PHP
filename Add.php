@@ -77,7 +77,7 @@
 <body>
     <div class="container">
         <h2>Add Student</h2>
-        <form action="code.php" method="post">
+        <form action="code" method="post">
             <label for="prn">Roll.No:</label>
             <input type="number" id="rno" name="rno" required>
             <label for="prn">PRN No:</label>

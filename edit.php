@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
 
     if ($result) {
        
-       echo "<script>if(confirm('Your Record Updated Successfully. ')){document.location.href='index.php'}else{document.location.href='index.php'};</script>";
+       echo "<script>if(confirm('Your Record Updated Successfully. ')){document.location.href='index'}else{document.location.href='index'};</script>";
     } else {
         echo "Error updating record: " . mysqli_error($con);
     }
